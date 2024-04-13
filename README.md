@@ -43,27 +43,20 @@ A **Bloom Filter** is a space-efficient **probabilistic** data structure that is
 ### Constructors & Destructor
 
 - **Constructor**: Initializes the `BloomFilter` with a specified number of hash functions, setting up the required environment for operations.
-
 - **Copy Constructor**: Ensures that when a `BloomFilter` is copied, all the internal states (like the bit array and hash seeds) are correctly duplicated.
-
 - **Move Constructor**: Efficiently transfers the internal state from one `BloomFilter` to another, optimizing performance by avoiding deep copying.
-
 - **Destructor**: Handles clean-up, ensuring no resources are leaked and the Bloom filter's internal state is properly disposed of.
 
 ### Functional Methods
 
 - **add**: Inserts an item into the `BloomFilter` by setting bits in the bit array based on the output of hash functions. Overloaded to handle strings directly or through files.
-
 - **possiblyContains**: Checks if an item might be in the `BloomFilter`. If any of the bits checked by the hash functions are not set, the item is definitely not in the set; otherwise, it might be.
-
 - **certainlyContains**: Combines the probabilistic check of the `BloomFilter` with a definitive check using an integrated `CDNServer`. This method is crucial for confirming item presence without false positives.
-
 - **reset**: Clears the `BloomFilter`, resetting all bits in the bit array for reuse.
 
 ### Operator Overloads
 
 - **& and |**: Implements intersection and union operations between two `BloomFilter` instances, modifying the current instance to represent the result.
-
 - **()**: Provides a quick and intuitive way to check for item presence using the `possiblyContains` method.
 
 ### I/O Operators
@@ -73,13 +66,9 @@ A **Bloom Filter** is a space-efficient **probabilistic** data structure that is
 ### Private Members and Methods
 
 - **bits**: A `std::bitset` used to represent the presence of elements. The size of this bitset is templated to allow for flexible storage based on use-case requirements.
-
 - **num_hashes**: Stores the number of hash functions used, affecting the accuracy and performance of the `BloomFilter`.
-
 - **seeds**: A vector of seeds for the hash functions, ensuring that each hash function produces unique and evenly distributed results.
-
 - **server**: A pointer to a `CDNServer` instance used for definitive checks, bridging the gap between probabilistic and certain results.
-
 - **hash**: A private method that computes the hash for an item using a given seed, central to the functionality of the `BloomFilter`.
 
 ### Implementation Tips
@@ -269,10 +258,8 @@ A **Trie**, also known as a prefix tree or digital tree, is a kind of search tre
 ## Node Class
 
 - **Constructor**:
-
   - Initializes a node with optional character data and a boolean indicating if it's the end of a word.
   - Each node contains an array of child node pointers (`children`), facilitating the Trie structure.
-
 - **Destructor**: Responsible for managing the deletion of children nodes to prevent memory leaks.
 
 ## Trie Class
@@ -280,29 +267,21 @@ A **Trie**, also known as a prefix tree or digital tree, is a kind of search tre
 ### Constructors & Destructor
 
 - **Default Constructor**: Initializes the Trie with a root node set to `nullptr` or an equivalent empty state.
-
 - **Copy Constructor**: Creates a new Trie as a deep copy of another Trie, ensuring all nodes are copied correctly.
-
 - **Move Constructor**: Transfers the internal state of one Trie to another, adopting the resources without copy overhead.
-
 - **Initializer List Constructor**: Allows initialization with a list of words (e.g., `Trie myTrie{"hello", "world"};`).
-
 - **Destructor**: Cleans up all resources, ensuring all dynamically allocated nodes are properly deleted.
 
 ### Assignment Operators
 
 - **Copy Assignment**: Ensures deep copying of Trie structures, similar to the copy constructor.
-
 - **Move Assignment**: Transfers resources from one Trie to another, nullifying the moved-from Trie.
 
 ### Basic Trie Operations
 
 - **insert**: Adds a new word to the Trie, allocating nodes as necessary for each character of the string.
-
 - **search**: Returns `true` if a particular word is present in the Trie.
-
 - **startsWith**: Checks if any word in the Trie starts with the given prefix.
-
 - **remove**: Deletes a word from the Trie, potentially removing nodes that are no longer needed.
 
 ### Traversal and Utility
@@ -312,17 +291,13 @@ A **Trie**, also known as a prefix tree or digital tree, is a kind of search tre
 ### I/O Operators
 
 - **operator<< (Output)**: Allows a Trie to be printed to an output stream, displaying all words or structured data.
-
 - **operator>> (Input)**: Enables initialization or modification of a Trie from an input stream.
 
 ### Additional Operators
 
 - **operator+ and operator+=**: Used for combining two Tries, either creating a new one or adding to an existing one.
-
 - **operator- and operator-=**: Facilitates the removal of words found in one Trie from another.
-
 - **operator()**: Provides a flexible interface for checking existence or performing string operations.
-
 - **operator== and operator!=**: For comparing two Tries, checking if they contain the same set of words.
 
 ### Private Members
