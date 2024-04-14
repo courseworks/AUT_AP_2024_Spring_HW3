@@ -1,7 +1,15 @@
+<h1 align="center">
+<strong>AUT_AP_2024_Spring Homework 3</strong>
+</h1>
+
+<p align="center">
+<strong> Deadline: 7th of Ordibehesht - 23:59 o'clock</strong>
+</p>
+
 # Bloom Filter Data Structure (Understanding)
 
 <p align="center">
-  <img src="./Resource/BloomFilter_DataStructure_Insertion_Phase.png" width="75%" />
+  <img src="./Resource/BloomFilter_DataStructure_Insertion_Phase.svg" width="75%" />
 </p>
 
 A **Bloom Filter** is a space-efficient **probabilistic** data structure that is used to test whether an element is a member of a set. **False positive matches are possible**, but false negatives are not. In other words, a query returns either **"possibly in set"** or **"definitely not in set"**. Bloom Filters are very effective when the goal is to reduce the use of resources (like network bandwidth or disk space) at the cost of a slight probability of error.
@@ -19,7 +27,7 @@ A **Bloom Filter** is a space-efficient **probabilistic** data structure that is
 - **Merge**: Combine two Bloom Filters into one that represents the union of their sets.
 
 <p align="center">
-  <img src="./Resource/BloomFilter_DataStructure_Search_Phase.png" width="75%" />
+  <img src="./Resource/BloomFilter_DataStructure_Search_Phase.svg" width="75%" />
 </p>
 
 ## Use Cases
@@ -50,7 +58,7 @@ A **Bloom Filter** is a space-efficient **probabilistic** data structure that is
 
 ### Constructors & Destructor
 
-- **Constructor**: Initializes the `BloomFilter` with a specified number of hash functions, setting up the required environment for operations.
+- **Constructor**: Initializes the `BloomFilter` with a specified number of hash functions. setting up the required environment for operations.
 - **Copy Constructor**: Ensures that when a `BloomFilter` is copied, all the internal states (like the bit array and hash seeds) are correctly duplicated.
 - **Move Constructor**: Efficiently transfers the internal state from one `BloomFilter` to another, optimizing performance by avoiding deep copying.
 - **Destructor**: Handles clean-up, ensuring no resources are leaked and the Bloom filter's internal state is properly disposed of.
@@ -298,7 +306,8 @@ A **Trie**, also known as a prefix tree or digital tree, is a kind of search tre
 
 ### Traversal and Utility
 
-- **bfs (Breadth-First Search)**: Performs a breadth-first traversal of the Trie, applying a provided function (`func`) to each visited node.
+- **bfs (Breadth-First Search)**: Performs a breadth-first traversal of the Trie, applying a provided function (`func`) to each visited node. (**Hint**: Use Queue 🙂)
+- **dfs (Depth-First Search)**: (**BONUS POINTS**) Performs a depth-first traversal of the Trie, applying a provided function (`func`) to each visited node. (**Hint**: Use Stack 🙂)
 
 ### I/O Operators
 
@@ -343,8 +352,9 @@ public:
         Node(char data = '\0', bool is_finished = false);
         ~Node(); // To manage deletion of children nodes
 
-        std::array<Node*, 26> children; // Array of 26 Node pointers
-        char data;
+        Node* parent; // Pointer to the parent node, parent of the root is "nullptr"
+        std::array<Node*, 26> children; // Array of 26 Node pointers, covering English alphabet
+        char data; // data for root node is "\0"
         bool is_finished;
     };
 
@@ -369,6 +379,7 @@ public:
 
     // Traversal and Utility
     void bfs(std::function<void(Node*&)> func); // Breadth-first over the node and calling "func" function over each of them
+    void dfs(std::function<void(Node*&)> func); // (BONUS), Depth-first over the node and calling "func" function over each of them
 
     // I/O operators
     friend std::ostream& operator<<(std::ostream& os, const Trie& trie); // Output operator
@@ -389,3 +400,43 @@ private:
 
 #endif // TRIE_H
 ```
+
+---
+
+## **Final Step: How To Test Your Program**
+
+If you want to debug your code, set the `if` statement to `true`. This will allow you to place your debugging code in the designated section. Once you're done with the debugging process, remember to set the `if` statement back to `false` to test your program using the provided `unit-test.cpp`.
+
+Furthermore, whatever code you write should be implemented in the `BloomFilter.cpp` and `Trie.cpp` files. Please refrain from making any changes to other files in the project.
+
+```cpp
+#include <iostream>
+#include <gtest/gtest.h>
+#include "BloomFilter.h"
+#include "Trie.h"
+
+int main(int argc, char **argv)
+{
+    if (true) // Set to false to run unit-tests
+    {
+        // Debug section: Place your debugging code here
+    }
+    else
+    {
+        ::testing::InitGoogleTest(&argc, argv);
+        std::cout << "RUNNING TESTS ..." << std::endl;
+        int ret{RUN_ALL_TESTS()};
+        if (!ret)
+            std::cout << "<<<SUCCESS>>>" << std::endl;
+        else
+            std::cout << "FAILED" << std::endl;
+    }
+    return 0;
+}
+```
+
+<p align="center">
+  <img src="./Resource/How_Hard_Can_It_Be.webp" alt="How hard can it be?" style="width: 60%;">
+</p>
+
+**Best Regards, Hamidi**
