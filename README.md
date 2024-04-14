@@ -4,7 +4,6 @@
   <img src="./Resource/BloomFilter_DataStructure_Insertion_Phase.png" width="75%" />
 </p>
 
-
 A **Bloom Filter** is a space-efficient **probabilistic** data structure that is used to test whether an element is a member of a set. **False positive matches are possible**, but false negatives are not. In other words, a query returns either **"possibly in set"** or **"definitely not in set"**. Bloom Filters are very effective when the goal is to reduce the use of resources (like network bandwidth or disk space) at the cost of a slight probability of error.
 
 ## Key Characteristics
@@ -226,7 +225,7 @@ private:
 # Trie Data Structure (Understanding)
 
 <p align="center">
-  <img src="./Resource/Trie_DataStructure.png" width="75%" />
+  <img src="./Resource/Trie_DataStructure.svg" width="75%" />
 </p>
 
 A **Trie**, also known as a prefix tree or digital tree, is a kind of search tree used in computer science to store a dynamic set or associative array where the keys are usually strings. Unlike a binary search tree, no node in the tree stores the key associated with that node. Instead, its position in the tree defines the key with which it is associated, and all the descendants of a node have a common prefix of the string associated with that node.
