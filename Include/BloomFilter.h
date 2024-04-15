@@ -26,7 +26,7 @@ public:
     // Add an item to the Bloom filter
     void add(const std::string& item);
     // Overload for adding items from a file, where words are assumed to be separated by ", "
-    void add(std::string&& file_name="words_expect_true.txt");
+    void add(std::string&& file_name="../Resource/Word_DataSet_1.txt");
 
     // Check if an item might be in the Bloom filter
     bool possiblyContains(const std::string& item) const;
