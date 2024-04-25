@@ -318,7 +318,7 @@ A **Trie**, also known as a prefix tree or digital tree, is a kind of search tre
 
 - **operator+ and operator+=**: Used for combining two Tries, either creating a new one or adding to an existing one.
 - **operator- and operator-=**: Facilitates the removal of words found in one Trie from another.
-- **operator()**: Provides a flexible interface for checking existence or performing string operations.
+- **operator()**: an interface for checking existence of a word in the trie.
 - **operator== and operator!=**: For comparing two Tries, checking if they contain the same set of words.
 
 ### Private Members
@@ -390,7 +390,7 @@ public:
     Trie& operator+=(const Trie& other); // Adds all words from the right-hand operand into the left-hand Trie
     Trie operator-(const Trie& other) const; // Creates a new Trie containing words from the first Trie not in the second
     Trie& operator-=(const Trie& other); // Removes words from the left-hand Trie found in the right-hand Trie
-    bool operator()(const std::string& query) const; // Can be used to check existence or perform other string operations
+    bool operator()(const std::string& query) const; // used to check existence of a word
     bool operator==(const Trie& other) const; // Check if two Tries have exactly the same words
     bool operator!=(const Trie& other) const; // Check if two Tries differ in any word
 
