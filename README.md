@@ -439,4 +439,4 @@ int main(int argc, char **argv)
   <img src="./Resource/How_Hard_Can_It_Be.webp" alt="How hard can it be?" style="width: 60%;">
 </p>
 
-**Best Regards, Hamidi**
+**Best Regards, [Hamidi](https://github.com/smhamidi)**
